@@ -60,6 +60,7 @@ EXPOSE 58846
 
 VOLUME ["/data", "/config"]
 
+ENV PUSHBULLET_APIKEY=""
 ENV WEB_ROOT=/
 ADD rootfs /
 
