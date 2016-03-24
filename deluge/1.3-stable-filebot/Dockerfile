@@ -53,10 +53,7 @@ RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/re
 	cd /deluge && python setup.py build && python setup.py install && \
 	apk del py-pip git build-base libffi-dev openssl-dev python-dev && rm -rf /var/cache/apk/* /deluge
 
-EXPOSE 53160
-EXPOSE 53160/udp
-EXPOSE 8112
-EXPOSE 58846
+EXPOSE 53160 53160/udp 8112 58846
 
 VOLUME ["/data", "/config"]
 
@@ -66,8 +63,6 @@ ENV PUSHBULLET_APIKEY=""
 	WEB_ROOT=/
 ADD rootfs /
 
-RUN chmod +x /usr/bin/startup
-RUN chmod +x /config/postdl && chmod +x /config/postrm
-RUN cp -r /config /config-bck
+RUN chmod +x /usr/bin/startup && chmod +x /config/postdl && chmod +x /config/postrm && cp -r /config /config-bck
 
 CMD ["/usr/bin/startup"]
