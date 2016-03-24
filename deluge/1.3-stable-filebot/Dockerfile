@@ -57,9 +57,9 @@ EXPOSE 53160 53160/udp 8112 58846
 
 VOLUME ["/data", "/config"]
 
-ENV PUSHBULLET_APIKEY=""
-	TVSHOW_FORMAT="TVShow/{n}/{'Saison '+s}/{n} - {sxe} - {t}"
-	MOVIES_FORMAT="Movies/{n} ({y}) by {director} [{genres[0]}]"
+ENV PUSHBULLET_APIKEY="" \
+	TVSHOW_FORMAT="TVShow/{n}/{'Saison '+s}/{n} - {sxe} - {t}" \
+	MOVIES_FORMAT="Movies/{n} ({y}) by {director} [{genres[0]}]" \
 	WEB_ROOT=/
 ADD rootfs /
 
