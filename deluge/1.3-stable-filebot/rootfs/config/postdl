@@ -7,9 +7,8 @@ media_folder="/data/Media"
 no_media_folder="/data/NoMedia"
 log_file="/data/actions.log"
 
-filebot_serie_format="TVShow/{n}/{'Saison '+s}/{n} - {sxe} - {t}"
-filebot_movie_format="Movies/{n} ({y}) by {director} [{genres[0]}]"
-filebot_subtitle="en"
+filebot_serie_format="<TVSHOW_FORMAT>"
+filebot_movie_format="<MOVIES_FORMAT>"
 
 current_script="$0"
 type="default"
@@ -22,29 +21,20 @@ if [ $# != 3 ]; then
 	type=$1
 fi
 
-log "current_script: $current_script"
-log "type: $type"
-
 case $type in
 		"default")
-			log "default_1: $1"
-			log "default_2: $2"
 			nohup "$current_script" "do" "$1/$2" &
 			;;
 			
 		"do")
 			torrentname="$2"
 			
-			log "downloads_folder: $downloads_folder"
 			log "torrentname: $torrentname"
 			
 			log "'$torrentname' RECEIVED"
 			
 			log "'$torrentname' FILEBOT START"
-			/opt/filebot/filebot.sh -script fn:amc --output "$media_folder" --action hardlink 
-				-non-strict "$torrentname" --log-file "/data/amc.log" 
-				--def "seriesFormat=$filebot_serie_format" "movieFormat=$filebot_movie_format" --conflict override 
-				--def subtitles="$filebot_subtitle" --def pushbullet="<PUSHBULLET_APIKEY>"
+			/opt/filebot/filebot.sh -script fn:amc --output "$media_folder" --action hardlink -non-strict "$torrentname" --log-file "/data/amc.log" --def "seriesFormat=$filebot_serie_format" "movieFormat=$filebot_movie_format" --conflict override --def pushbullet="<PUSHBULLET_APIKEY>"
 			filebot_return=$?
 			log "'$torrentname' FILEBOT END [$filebot_return]"
 								

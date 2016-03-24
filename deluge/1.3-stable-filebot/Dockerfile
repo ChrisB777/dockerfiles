@@ -61,7 +61,9 @@ EXPOSE 58846
 VOLUME ["/data", "/config"]
 
 ENV PUSHBULLET_APIKEY=""
-ENV WEB_ROOT=/
+	TVSHOW_FORMAT="TVShow/{n}/{'Saison '+s}/{n} - {sxe} - {t}"
+	MOVIES_FORMAT="Movies/{n} ({y}) by {director} [{genres[0]}]"
+	WEB_ROOT=/
 ADD rootfs /
 
 RUN chmod +x /usr/bin/startup

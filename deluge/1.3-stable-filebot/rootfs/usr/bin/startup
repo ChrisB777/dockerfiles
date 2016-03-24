@@ -6,6 +6,8 @@ addgroup -g ${GID} deluge && adduser -h /home/deluge -s /bin/sh -D -G deluge -u 
 
 [[ $WEB_ROOT =~ ^\/.* ]] && sed -i 's#<webroot>#'$WEB_ROOT'#' /config/web.conf || sed -i 's#<webroot>#/'$WEB_ROOT'#' /config/web.conf
 sed -i 's#<PUSHBULLET_APIKEY>#'$PUSHBULLET_APIKEY'#' /config/postdl
+sed -i 's#<TVSHOW_FORMAT>#'$TVSHOW_FORMAT'#' /config/postdl
+sed -i 's#<MOVIES_FORMAT>#'$MOVIES_FORMAT'#' /config/postdl
 
 mkdir -p /config/state
 mkdir -p /data/.torrents
@@ -19,5 +21,8 @@ touch /data/actions.log
 chown -R deluge:deluge /data
 chown -R deluge:deluge /config
 chown -R deluge:deluge /home/deluge
+
+chmod +x /config/postdl
+chmod +x /config/postrm
 
 supervisord -c /etc/supervisord.conf
