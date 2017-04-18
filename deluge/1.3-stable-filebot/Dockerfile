@@ -29,18 +29,18 @@ RUN export BUILD_DEPS="wget \
     && apk del ${BUILD_DEPS} \
     && rm /tmp/* /var/cache/apk/*
 
-ENV FB_VER=4.6.1
+ENV FB_VER=4.7.9
 
 RUN apk add -U wget \
                 unzip \
     && mkdir /opt/filebot \
     && cd /opt/filebot \
-    && wget http://downloads.sourceforge.net/project/filebot/filebot/FileBot_${FB_VER}/FileBot_${FB_VER}-portable.zip \
-    && unzip FileBot_${FB_VER}-portable.zip \
+    && wget http://downloads.sourceforge.net/project/filebot/filebot/FileBot_${FB_VER}/FileBot_${FB_VER}-portable.tar.xz \
+    && tar xvfJ FileBot_${FB_VER}-portable.tar.xz \
     && chmod -R 777 /opt/filebot \
     && apk del wget \
                 unzip \
-    && rm -rf /opt/filebot/FileBot_${FB_VER}-portable.zip /var/cache/apk/*
+    && rm -rf /opt/filebot/FileBot_${FB_VER}-portable.tar.xz /var/cache/apk/*
 
 ENV DELUGE_VER=1.3-stable UID=991 GID=991
 
