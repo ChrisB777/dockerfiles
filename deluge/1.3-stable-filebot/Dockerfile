@@ -35,7 +35,7 @@ RUN apk add -U wget \
                 unzip \
     && mkdir /opt/filebot \
     && cd /opt/filebot \
-    && wget http://downloads.sourceforge.net/project/filebot/filebot/FileBot_${FB_VER}/FileBot_${FB_VER}-portable.tar.xz \
+    && wget --no-check-certificate http://downloads.sourceforge.net/project/filebot/filebot/FileBot_${FB_VER}/FileBot_${FB_VER}-portable.tar.xz \
     && tar xvfJ FileBot_${FB_VER}-portable.tar.xz \
     && chmod -R 777 /opt/filebot \
     && apk del wget \
