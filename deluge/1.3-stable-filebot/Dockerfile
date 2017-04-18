@@ -4,7 +4,7 @@ MAINTAINER xataz <https://github.com/xataz/>
 ENV JAVA_HOME=/opt/jre \
     JAVA_VERSION=8u74-b02 \
     FOLDER_TMP=jre1.8.0_74 \
-    GLIBC_URL=https://github.com/andyshinn/alpine-pkg-glibc/releases/download/unreleased \
+    GLIBC_URL=https://github.com/andyshinn/alpine-pkg-glibc/releases/download/2.23-r1 \
     GLIBC_VER=2.23-r1
 
 RUN export BUILD_DEPS="wget \
