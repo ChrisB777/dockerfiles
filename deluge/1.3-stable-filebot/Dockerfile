@@ -46,7 +46,7 @@ ENV DELUGE_VER=1.3-stable UID=991 GID=991
 
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
 	apk add --update bash python build-base python-dev py-setuptools py-six py-mako py-chardet \
-		xdg-utils py-gtk libtorrent-rasterbar@testing py-openssl \
+		xdg-utils py-gtk libboost_python libtorrent-rasterbar@testing py-openssl \
 		py-twisted py-enum34 openssl-dev py-pip librsvg libffi-dev git supervisor && \
 	pip install service_identity pyxdg cffi cryptography && \
 	cd / && git clone -b ${DELUGE_VER} https://github.com/deluge-torrent/deluge.git && \
